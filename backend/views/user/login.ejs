@@ -1,0 +1,33 @@
+<%- include('../layouts/boilerplate') %>
+
+
+
+<div class="row justify-content-center">
+  <div class="col-lg-6">
+    <div class="container-lg mt-5">
+      <div class="row justify-content-center">
+        <div class="text-center">
+          <h1>Sign in</h1>
+        </div>
+        <form action="/login" class="p-3 border rounded shadow validated-form" method="POST" novalidate>
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" aria-describedby="emailHelp" name="username" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg w-100">Sign in</button>
+        </form>
+        <div class="mt-2">
+          <p>New User? <a href="/register" class="btn btn-warning btn-sm">Register</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<%- include('../layouts/validated-form') %>

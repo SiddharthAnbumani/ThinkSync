@@ -1,0 +1,62 @@
+<%- include('./layouts/boilerplate') %>
+<%- include('./partials/navbar') %>
+
+
+
+<div class="container mt-4">
+    <h1 class="mb-4">Edit - <%= editEntry.title %></h1>
+
+    <form action="/show/<%= editEntry._id %>?_method=PUT" method="POST" class="mb-3 validated-form" novalidate>
+        <div class="mb-3">
+            <label for="title" class="form-label">Enter Title:</label>
+            <input type="text" id="title" name="title" placeholder="title" value="<%= editEntry.title %>" class="form-control" required>
+            <div class="valid-feedback">
+                Looks Good!
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="date" class="form-label">Enter Date:</label>
+            <input type="date" id="date" name="date" value="<%= editEntry.date ? editEntry.date.toISOString().split('T')[0] : '' %>" class="form-control" required>
+            <div class="valid-feedback">
+                Looks Good!
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="content" class="form-label">Content:</label>
+            <textarea rows="5" id="content" name="content" placeholder="Write away" class="form-control" required><%= editEntry.content %></textarea>
+            <div class="valid-feedback">
+                Looks Good!
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="d-flex gap-2">
+        <a href="/show/<%= editEntry._id %>" class="btn btn-secondary">Cancel</a>
+        <a href="/" class="btn btn-dark">Home</a>
+    </div>
+</div>
+
+<%- include('layouts/validated-form') %>
+
+
+<!-- 
+    <h1>Edit - <%= editEntry.title %></h1>
+    <form action="/show/<%= editEntry._id %>/edit?_method=PUT" method="POST">
+        <label for="title">Enter Title: </label>
+        <input type="text" id="title" name="title" placeholder="title" value="<%= editEntry.title %>"><br>
+
+        <label for="date">Enter Date: </label>
+        <input type="date" id="date" name="date" value="<%= editEntry.date.toISOString().split('T')[0] %>"><br>
+
+        <label for="content">Content: </label><br>
+        <textarea rows="5" cols="30" placeholder="Write away" id="content" name="content"><%= editEntry.content %></textarea><br>
+
+        <button>Submit</button>
+    </form>
+
+    <form action="/show/<%= editEntry._id %>"><button>Cancel</button></form>
+    <form action="/"><button>Home</button></form> -->

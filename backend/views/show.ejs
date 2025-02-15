@@ -1,0 +1,27 @@
+<%- include('layouts/boilerplate') %>
+<%- include('./partials/navbar') %>
+
+
+<div class="mt-5">
+    <% for(let entry of entries){ %>
+        <div class="container mt-1">
+            <div class="row justify-content-center">
+                <div class="col-md-6"> <!-- Adjust width using col classes -->
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="/show/<%=entry._id%>">
+                                <%= entry.date.toDateString() %> - <%= entry.title %>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <% } %>
+
+</div>
+    
+            
+
+

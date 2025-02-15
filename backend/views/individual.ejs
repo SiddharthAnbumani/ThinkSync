@@ -1,0 +1,26 @@
+<%- include('layouts/boilerplate') %>
+<%- include('./partials/navbar') %>
+
+<div class="container mt-5">
+    <div class="card" style="width: 30rem;">
+        <div class="card-body">
+          <h1 class="card-title"><%= foundEntry.title %></h1>
+          <h4 class="card-subtitle mb-2 text-body-secondary"><%= foundEntry.date.toDateString() %></h4>
+          <h2 class="card-text"><%= foundEntry.content %></h2>
+        </div>
+      </div>
+    <div class="mt-2">
+        <form action="/show/<%= foundEntry._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-danger">Delete</button>
+        </form>
+           
+            <a href="/show/<%= foundEntry._id %>/edit">
+                <button class="btn btn-primary">Edit</button>
+            </a>
+        </form>
+    </div>
+</div>
+
+
+    
+    
