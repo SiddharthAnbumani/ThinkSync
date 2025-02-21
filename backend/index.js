@@ -9,7 +9,7 @@ const entryRoutes = require('./routes/entry')
 const userRoutes = require('./routes/user')
 const {globalMiddleware} = require('./middleware')
 
-//Validationx
+//Validation 
 const Joi = require('joi')
 const JoiEntrySchema = require('./schemas')
 
@@ -20,6 +20,7 @@ const JoiEntrySchema = require('./schemas')
 const User = require('./models/user')
 const Entry = require('./models/entry')
 const mongoose = require('mongoose')
+
 mongoose.connect('mongodb://localhost:27017/journalApp')
 .then (()=>{
     console.log("CONNECTED TO MONGO")
@@ -33,6 +34,7 @@ app.set('views',path.join(__dirname,'views'))
 
 app.use(cors())
 app.use(express.urlencoded({extended:true}))
+app.use(express.json()); 
 app.use(methodOverride('_method'))
 
 const sessionConfig = {
@@ -53,14 +55,13 @@ app.use((req,res,next)=>{
     res.locals.error = req.flash()
     next();
 })
-//Passport Authentication
+
+//Passport.js for Authentication
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()))
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
-
-
 
 //Routes
 app.use('/', entryRoutes)

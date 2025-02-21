@@ -7,11 +7,10 @@ module.exports.renderHome = (req, res) => {
   res.render("home");
 };
 
-// module.exports.renderShow = async(req,res)=>{
-//     const entries = await Entry.find({})
-//     res.render('show',{entries})
-// }
-// module.exports.renderShow =
+module.exports.show =  async (req, res) => {
+  const entries = await Entry.find({}).populate('author')
+  res.render("show", { entries })
+}
 
 module.exports.renderNew = (req, res) => {
   res.render("new");
@@ -19,7 +18,12 @@ module.exports.renderNew = (req, res) => {
 
 module.exports.makeNew = async (req, res) => {
   try {
-    const entry = new Entry(req.body);
+    const entry = new Entry(
+      {title: req.body.title,
+      content: req.body.content,
+      date: new Date(),
+      author: req.user._id});
+
     await entry.save();
     res.redirect(`/show/${entry._id}/`);
   } catch (error) {
@@ -35,16 +39,23 @@ module.exports.renderEdit = catchAsync(async (req, res) => {
 });
 
 module.exports.makeEdit = catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const foundEntry = await Entry.findByIdAndUpdate(id, req.body, {
-      new: true,
-    });
-    res.redirect(`/show/${id}`);
-});
+  const { id } = req.params;
+  try {
+      const FoundEntry = await Entry.findByIdAndUpdate(id, req.body, { new: true });
+      if (!FoundEntry) {
+          return res.status(404).send("Entry not found");
+      }
+      res.redirect("/show"); 
+  } catch (error) {
+      console.error(error);
+      res.status(500).send("Server error");
+  }
+})
 
 module.exports.renderShow = catchAsync(async (req, res) => {
   const { id } = req.params;
-  const foundEntry = await Entry.findById(id);
+  const foundEntry = await Entry.findById(id).populate('author');
+  console.log(foundEntry); // 🔍 Debug: Check if author is populated
   res.render("individual", { foundEntry });
 });
 
