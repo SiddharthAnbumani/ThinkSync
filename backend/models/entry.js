@@ -14,10 +14,10 @@ const EntrySchema = new mongoose.Schema({
         type: String,
         required:true
     },
-    author:{
+    author:[{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user'
-    }
+        ref: 'User'
+    }]
 })
 
 const Entry = mongoose.model('Entry', EntrySchema)

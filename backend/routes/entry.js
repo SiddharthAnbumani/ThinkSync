@@ -11,21 +11,16 @@ router
   .get(middleware.isAuth,entryController.renderNew)
   .post(middleware.isAuth,validatedEntry,entryController.makeNew)
 
-router.get("/show", async (req, res) => {
-  const entries = await Entry.find({})
-  res.render("show", { entries })
-})
+
+
+router.get("/show", entryController.show)
+
+
+router.put('/update/:id', entryController.makeEdit);
+
 router.route("/show/:id/edit")
 .get(entryController.renderEdit)
 
-
-// router.put("/update/:id", entryController.makeEdit)
-
-router.put('/update/:id', async(req,res)=>{
-  const {id} = req.params
-  const FoundEntry = await Entry.findByIdAndUpdate(id,req.body, {new:true})
-  res.redirect(`/show/${id}`);
-})
 
 router
   .route("/show/:id")

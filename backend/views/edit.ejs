@@ -6,7 +6,7 @@
 <div class="container mt-4">
     <h1 class="mb-4">Edit - <%= editEntry.title %></h1>
 
-    <form action="/show/<%= editEntry._id %>?_method=PUT" method="POST" class="mb-3 validated-form" novalidate>
+    <form action="/update/<%= editEntry._id %>?_method=PUT" method="POST">
         <div class="mb-3">
             <label for="title" class="form-label">Enter Title:</label>
             <input type="text" id="title" name="title" placeholder="title" value="<%= editEntry.title %>" class="form-control" required>
