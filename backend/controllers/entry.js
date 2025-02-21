@@ -8,8 +8,12 @@ module.exports.renderHome = (req, res) => {
 };
 
 module.exports.show =  async (req, res) => {
-  const entries = await Entry.find({}).populate('author')
+  try{
+    const entries = await Entry.find({ author: req.user._id }).populate('author')
   res.render("show", { entries })
+  }catch {
+    res.redirect('/login')
+  }
 }
 
 module.exports.renderNew = (req, res) => {
