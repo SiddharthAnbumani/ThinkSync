@@ -1,28 +1,23 @@
 <%- include('layouts/boilerplate') %>
 <%- include('./partials/navbar') %>
 
-
-<div class="mt-5">
-    <% for(let entry of entries){ %>
-        <div class="container mt-1">
-            <div class="row justify-content-center">
-                <div class="col-md-6"> <!-- Adjust width using col classes -->
-                    <div class="card">
-                        <div class="card-body">
-                            <a href="/show/<%=entry._id%>">
-                                <%= entry.date.toDateString() %> - <%= entry.title %>
-                            </a>
-                            <p>Created by ~ <%=entry.author[0].username%></p>
-                        </div>
-                    </div>
+<div class="container mt-5 d-flex flex-column align-items-center">
+    <% if (entries.length > 0) { %>
+        <% entries.forEach(entry => { %>
+            <div class="card mb-3 text-center shadow-sm" style="width: 30rem; min-height: 10rem;">
+                <div class="card-body d-flex flex-column justify-content-center">
+                    <h2 class="card-title"><%= entry.title %></h2>
+                    <h4 class="card-subtitle mb-2 text-body-secondary"><%= entry.date.toDateString() %></h4>
+                    <p class="card-text"><%= entry.content %></p>
+                    <a href="/show/<%= entry._id %>" class="btn btn-info">View Entry</a>
                 </div>
             </div>
+        <% }); %>
+    <% } else { %>
+        <div class="text-center mt-5">
+            <h3>No journal entries found.</h3>
+            <p>Start writing your first entry now!</p>
+            <a href="/new" class="btn btn-success">Create New Entry</a>
         </div>
-        
     <% } %>
-
 </div>
-    
-            
-
-
