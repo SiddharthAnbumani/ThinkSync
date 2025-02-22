@@ -4,6 +4,7 @@ const Joi = require("joi");
 const catchAsync = require('../utils/catchAsync')
 
 module.exports.renderHome = (req, res) => {
+  console.log("Current User:", req.user);
   res.render("home");
 };
 
