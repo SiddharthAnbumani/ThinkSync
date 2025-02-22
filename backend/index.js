@@ -50,11 +50,10 @@ const sessionConfig = {
 app.use(session(sessionConfig))
 app.use(flash())
 
-app.use((req,res,next)=>{
-    res.locals.Success = req.flash();
-    res.locals.error = req.flash()
+app.use((req, res, next) => {
+    res.locals.user = req.user; // This makes `user` available in all EJS templates
     next();
-})
+});
 
 //Passport.js for Authentication
 app.use(passport.initialize());
