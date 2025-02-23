@@ -3,6 +3,11 @@ const Entry = require("../models/entry");
 const Joi = require("joi");
 const catchAsync = require('../utils/catchAsync')
 
+module.exports.landing = (req,res)=>{
+  res.render('landing')
+}
+
+
 module.exports.renderHome = (req, res) => {
   console.log("Current User:", req.user);
   res.render("home");

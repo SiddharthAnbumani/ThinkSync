@@ -5,7 +5,10 @@ const Entry = require("../models/entry")
 const {validatedEntry} = require('../middleware')
 const middleware = require('../middleware')
 
-router.get("/", entryController.renderHome)
+
+router.get('/', entryController.landing)
+
+router.get("/home", entryController.renderHome)
 router
   .route("/new")
   .get(middleware.isAuth,entryController.renderNew)
