@@ -1,0 +1,10 @@
+.custom-btn2 {
+    background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%) !important;
+    color: white !important;
+    border-radius: 20px; 
+    padding: 10px 20px; 
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}

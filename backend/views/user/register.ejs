@@ -1,11 +1,35 @@
 <%- include('../layouts/boilerplate') %>
+<link rel="stylesheet" href="../../global.css">
+<style>
+  .custom-btn2 {
+    background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%) !important;
+    color: white !important;
+    border-radius: 20px; 
+    padding: 10px 20px; 
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
 
-<div class="d-flex justify-content-center align-items-start vh-100">
+.custom-btn3 {
+    background: linear-gradient(90deg, #fcff9e 0%, #c67700 100%)!important;
+    color: white !important;
+    border-radius: 15px; 
+    padding: 6px 14px; 
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease-in-out;
+}
+</style>
+
+<div class="d-flex justify-content-center align-items-center vh-100">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-6">
         <div class="text-center">
-          <h1 class="display-3">Register!</h1>
+          <h1 class="display-4 ">Register!</h1>
         </div>
         <form action="/register" class="p-4 border rounded shadow validated-form bg-white" method="POST" novalidate>
           <div class="mb-3">
@@ -21,10 +45,10 @@
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" name="password" required>
           </div>
-          <button type="submit" class="btn btn-success btn-lg w-100">Register</button>
+          <button type="submit" class="btn custom-btn2 btn-lg w-100">Register</button>
         </form>
         <div class="mt-2 text-center">
-          <p>Existing User? <a href="/login" class="btn btn-warning btn-sm">Login</a></p>
+          <p>Existing User? <a href="/login" class="btn custom-btn3 btn-sm">Login</a></p>
         </div>
       </div>
     </div>

@@ -1,23 +1,49 @@
 <%- include('layouts/boilerplate') %>
 <%- include('./partials/navbar') %>
 
-<div class="container mt-5 d-flex flex-column align-items-center">
-    <% if (entries.length > 0) { %>
-        <% entries.forEach(entry => { %>
-            <div class="card mb-3 text-center shadow-sm" style="width: 30rem; min-height: 10rem;">
-                <div class="card-body d-flex flex-column justify-content-center">
-                    <h2 class="card-title"><%= entry.title %></h2>
-                    <h4 class="card-subtitle mb-2 text-body-secondary"><%= entry.date.toDateString() %></h4>
-                    <p class="card-text"><%= entry.content %></p>
-                    <a href="/show/<%= entry._id %>" class="btn btn-info">View Entry</a>
+<style>
+    .custom-btn {
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%) !important;
+    color: white !important;
+    border-radius: 20px; 
+    padding: 10px 20px; 
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Button Hover Effect */
+.custom-btn:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <% if (entries.length > 0) { %>
+            <% entries.forEach(entry => { %>
+                <div class="col-md-6 d-flex justify-content-center">
+                    <div class="card mb-3 text-center shadow-sm" style="width: 30rem; min-height: 10rem;">
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <h2 class="card-title"><%= entry.title %></h2>
+                            <h4 class="card-subtitle mb-2 text-body-secondary"><%= entry.date.toDateString() %></h4>
+                            <p class="card-text"><%= entry.content %></p>
+                            <a href="/show/<%= entry._id %>" class="btn custom-btn">View Entry</a>
+                        </div>
+                    </div>
                 </div>
+            <% }); %>
+        <% } else { %>
+            <div class="text-center mt-5">
+                <h3>No journal entries found.</h3>
+                <p>Start writing your first entry now!</p>
+                <a href="/new" class="btn btn-success">Create New Entry</a>
             </div>
-        <% }); %>
-    <% } else { %>
-        <div class="text-center mt-5">
-            <h3>No journal entries found.</h3>
-            <p>Start writing your first entry now!</p>
-            <a href="/new" class="btn btn-success">Create New Entry</a>
-        </div>
-    <% } %>
+        <% } %>
+    </div>
+</div>
+
+
 </div>
