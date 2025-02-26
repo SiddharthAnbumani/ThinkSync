@@ -1,13 +1,41 @@
 <%- include('../layouts/boilerplate') %>
 
 
+<style>
+  .custom-btn2 {
+    background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%) !important;
+    color: white !important;
+    border-radius: 20px; 
+    padding: 10px 20px; 
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+  .custom-btn3 {
+    background: linear-gradient(90deg, #fcff9e 0%, #c67700 100%)!important;
+    color: white !important;
+    border-radius: 15px; 
+    padding: 6px 14px; 
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Button Hover Effect */
+.custom-btn:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+</style>
 
 <div class="d-flex justify-content-center align-items-start vh-100">
   <div class="col-md-4 col-sm-6">
     <div class="container mt-3">
       <div class="row justify-content-center">
         <div class="text-center">
-          <h1>Sign in</h1>
+          <h1 class="display-4">Sign in</h1>
         </div>
         <form action="/login" class="p-3 border rounded shadow validated-form" method="POST" novalidate>
           <div class="mb-3">
@@ -18,11 +46,17 @@
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" name="password" required>
           </div>
-          <button type="submit" class="btn btn-primary btn-lg w-100">Sign in</button>
+          <button type="submit" class="btn custom-btn2 btn-lg w-100">Sign in</button>
         </form>
-        <div class="mt-2">
-          <p>New User? <a href="/register" class="btn btn-warning btn-sm">Register</a></p>
-        </div>
+
+        <div class="d-flex justify-content-center mt-2">
+          <div class="col-auto">
+              <p class="text-center">New User? 
+                  <a href="/register" class="btn custom-btn3 btn-sm">Register</a>
+                  <a href="/home" class="btn btn-outline-danger btn-sm">home</a>
+              </p>
+          </div>
+      </div>
       </div>
     </div>
   </div>

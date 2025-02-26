@@ -1,6 +1,18 @@
 <%- include('layouts/boilerplate') %>
 <%- include('./partials/navbar') %>
 
+<style>
+   .custom-btn4 {
+    background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%)!important;
+    color: white !important;
+    border-radius: 20px; 
+    padding: 10px 20px; 
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+</style>
 
 
 <div class="d-flex justify-content-center">
@@ -32,7 +44,7 @@
             </div>
           </div>
   
-          <button type="submit" class="btn btn-success w-100">Make Entry</button>
+          <button type="submit" class="btn custom-btn4 w-100">Make Entry</button>
         </form>
       </div>
     </div>

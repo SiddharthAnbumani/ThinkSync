@@ -14,6 +14,7 @@ module.exports.register = async(req,res) =>{
 }
 
 module.exports.renderLogin = (req,res)=>{
+    console.log(req.user)
     res.render('user/login')
 }
 
